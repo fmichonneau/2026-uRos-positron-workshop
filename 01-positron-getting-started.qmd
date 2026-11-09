@@ -11,6 +11,7 @@ format:
     transition: slide
     highlight-style: github
     code-overflow: wrap
+    css: styles.css
 ---
 
 ## Install Positron
@@ -95,7 +96,11 @@ Posit, PBC
 * the command palette
 * layouts
 * install extensions
+* Open existing projects
+* Create new projects
+
+
 
 ## Your turn: Positron Bingo
 
-{{< countdown "10:00" >}}
+{{< countdown "10:00" font_size="6rem"  top="50%" left="50%" class="slide-center"  >}}

@@ -1,0 +1,5 @@
+/* countdown timers default to the bottom-right corner; this centres one */
+.countdown.slide-center {
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
