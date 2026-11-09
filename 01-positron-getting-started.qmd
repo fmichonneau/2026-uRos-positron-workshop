@@ -1,0 +1,101 @@
+---
+title: "Getting Started with Positron"
+subtitle: "A Next-Generation IDE for Data Science"
+date: "2026-11-18"
+lang: en
+format:
+  revealjs:
+    theme: default
+    slide-number: true
+    progress: true
+    transition: slide
+    highlight-style: github
+    code-overflow: wrap
+---
+
+## Install Positron
+
+### Option 1 (you can install locally)
+
+Go to <https://positron.posit.co/download>
+
+### Option 2 (use the web version)
+
+Go to <https://workbench.workshop-prod.pwb.posit.it/>
+
+
+## 
+
+::: {.columns}
+
+::: {.column width="50%"}
+### François Michonneau
+
+Learning Architect
+
+Posit, PBC
+:::
+
+::: {.column width="50%"}
+### Christophe Dervieux
+
+Principal Software Engineer
+
+Posit, PBC
+:::
+
+:::
+
+## Your turn
+
+### Introduce yourself to your neighbor
+
+- Your name
+- What you use R for
+- One word that describes how you are feeling about Positron
+
+{{< countdown "3:00" >}}
+
+## Poll
+
+### Which languages do you use for data science?
+
+### Have you used Positron before?
+
+## {background-image="images/why-positron.png"}
+
+## {background-image="images/positron-layout-blank.png"}
+
+## {background-image="images/positron-layout-manage.png"}
+
+## {background-image="images/positron-layout-write.png"}
+
+## {background-image="images/positron-layout-run.png"}
+
+## {background-image="images/positron-layout-understand.png"}
+
+## {background-image="images/positron-open-folder.png"}
+
+## {background-image="images/positron-open-folder-arrows.png"}
+
+## Workspace
+
+* The **workspace** is a core concept in Positron
+
+* A **workspace** is a **folder**
+
+* Similar to a **Project** in RStudio
+
+* Pro tip: one **project** == one **folder**
+
+## A demo of Positron features
+
+* interpreter session selection
+* sessions always start fresh
+* the command palette
+* layouts
+* install extensions
+
+## Your turn: Positron Bingo
+
+{{< countdown "10:00" >}}
