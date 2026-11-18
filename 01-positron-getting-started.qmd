@@ -22,8 +22,10 @@ Go to <https://positron.posit.co/download>
 
 ### Option 2 (use the web version)
 
-Go to <https://workbench.workshop-prod.pwb.posit.it/>
+* Go to <https://workbench.workshop-prod.pwb.posit.it/>
+* Registration code: <TBD>
 
+### Everyone, open: <https://bit.ly/2026-uros>
 
 ## 
 
@@ -47,6 +49,8 @@ Posit, PBC
 
 :::
 
+Content developed by Mine Çetinkaya-Rundel.
+
 ## Your turn
 
 ### Introduce yourself to your neighbor
@@ -59,9 +63,10 @@ Posit, PBC
 
 ## Poll
 
-### Which languages do you use for data science?
+<https://app.sli.do/event/c8oJuTpDhdzVStRPVVvbQU>
 
-### Have you used Positron before?
+![Slido poll QR code](images/slido-poll.png)
+
 
 ## {background-image="images/why-positron.png"}
 
@@ -91,16 +96,33 @@ Posit, PBC
 
 ## A demo of Positron features
 
-* interpreter session selection
-* sessions always start fresh
-* the command palette
-* layouts
-* install extensions
-* Open existing projects
+* Data explorer
+* Layouts
+* Interpreter session selection
+* Sessions always start fresh
+* The command palette
+* Update Settings
+* Install extensions
 * Create new projects
-
+* Air formatter
 
 
 ## Your turn: Positron Bingo
 
-{{< countdown "10:00" font_size="6rem"  top="50%" left="50%" class="slide-center"  >}}
+{{< countdown "15:00" font_size="6rem"  top="50%" left="50%" class="slide-center"  >}}
+
+::: {.incremental}
+* [Bingo solutions](https://posit-dev.github.io/positron-workshop/bingo-solutions/)
+:::
+
+## Editing Quarto documents & Git
+
+* [Slides](https://docs.google.com/presentation/d/1UGASpgxe5z-XHs_CwxaG6phI-lZg-x7fL5cToLZFcEs)
+
+## A few more things
+
+* Python
+* Posit Assistant
+
+## Questions?
+

@@ -1,0 +1,118 @@
+---
+title: "Posit Assistant in Positron"
+subtitle: "Getting started with"
+date: "2026-11-18"
+lang: en
+format:
+  revealjs:
+    theme: default
+    slide-number: true
+    progress: true
+    transition: slide
+    highlight-style: github
+    code-overflow: wrap
+    css: styles.css
+---
+
+
+## Install Positron
+
+### Option 1 (you can install locally)
+
+Go to <https://positron.posit.co/download>
+
+### Option 2 (use the web version)
+
+* Go to <https://workbench.workshop-prod.pwb.posit.it/>
+* Registration code: <TBD>
+
+## 
+
+
+### François Michonneau
+
+Learning Architect
+
+Posit, PBC
+
+
+## Your turn
+
+### Introduce yourself to your neighbor
+
+- Your name
+- What you use R for
+- What's the most interesting thing you have used AI for?
+
+{{< countdown "3:00" >}}
+
+## Poll
+
+<https://app.sli.do/event/bN4u1wKDYSv2TtSN5PepTH>
+
+![Slido poll QR code](images/slido-poll-2.png)
+
+## {background-image="images/why-positron.png"}
+
+## {background-image="images/what-is-posit-assistant.png"}
+
+## {background-image="images/posit-assistant-choose-provider.png"}
+
+## {background-image="images/posit-assistant-context.png"}
+
+## First demo
+
+::: {.incremental}
+* ask Posit Assistant to fix the code in the 'world-happiness.qmd' Quarto document
+* ask Posit Assistant to use the gt package to create a colorful table for the 10 happiest countries
+* ask something else (another plot, a statistical analysis, a map, etc.)
+:::
+
+{{< countdown "5:00" >}}
+
+## Data Cleaning mode
+
+* Use the data cleaning mode to create a dataset that combines the 5 CSV files
+
+## Create a Shiny app
+
+* Now that we have clean data, ask Posit Assistant to create a Shiny app that let's you explore the data. For instance:
+
+> Create a Shiny app using the clean happiness data to explore how the trajectory through time of the happiness score and rank for multiple countries. Let the user select countries (multi-select) and the years (with a slider).
+
+Things you can try:
+
+* change the theme/colors of the app
+* add other tabs with additional visualizations/tables
+* use the other variables in the dataset
+* ask Posit Assistant to come up with suggestions to improve your app
+
+{{< countdown "10:00" >}}
+
+## Sharing your apps from Positron
+
+* Use Posit Publisher to publish to Connect (or Connect Cloud)
+* Use the Git-backed integration
+
+## Share your Shiny app
+
+## Creating a report from a conversation with Posit Assistant
+
+* Using the `/report` skill
+
+## Getting the most out of Posit Assistant
+
+* Project and User Memory
+* Plugins (MCP and Skills)
+* Cost monitoring
+
+## What can you build?
+
+* Use one of the datasets provided, your own data, a public dataset, or a combination of these to build something interesting with Posit Assistant in 20 minutes
+* Use Posit Publisher to publish it to Posit Connect
+* Make sure to edit the Access settings to "All Users"
+* Share the URL in the Slido Q&A
+
+{{< countdown "15:00" font_size="6rem"  top="50%" left="50%" class="slide-center"  >}}
+
+## Questions?
