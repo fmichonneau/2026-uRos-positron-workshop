@@ -1,18 +1,29 @@
 ---
-title: "Getting Started with Positron"
-subtitle: "A Next-Generation IDE for Data Science"
+pagetitle: "Getting Started with Positron"
 date: "2026-11-18"
 lang: en
+metadata-files: [_posit-slides.yml]
 format:
   revealjs:
-    theme: default
-    slide-number: true
-    progress: true
-    transition: slide
-    highlight-style: github
     code-overflow: wrap
     css: styles.css
 ---
+
+## {.divider background-color="#111C26"}
+
+<br><br>
+
+::: eyebrow
+Workshop
+:::
+
+::: headline
+Getting Started with Positron
+:::
+
+::: subhead
+A Next-Generation IDE for Data Science
+:::
 
 ## Install Positron
 
@@ -49,7 +60,8 @@ Posit, PBC
 
 :::
 
-Content developed by Mine Çetinkaya-Rundel.
+Content developed by Jenny Bryan, Mine Çetinkaya-Rundel, Julia Silge and Charlotte Wickham
+for the [Positron workshop](https://posit-dev.github.io/positron-workshop/).
 
 ## Your turn
 
@@ -59,7 +71,7 @@ Content developed by Mine Çetinkaya-Rundel.
 - What you use R for
 - One word that describes how you are feeling about Positron
 
-{{< countdown "3:00" >}}
+{{< countdown "3:00" top="0" right="0" >}}
 
 ## Poll
 

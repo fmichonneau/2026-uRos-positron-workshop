@@ -1,19 +1,29 @@
 ---
-title: "Posit Assistant in Positron"
-subtitle: "Getting started with"
+pagetitle: "Getting Started with Posit Assistant"
 date: "2026-11-18"
 lang: en
+metadata-files: [_posit-slides.yml]
 format:
   revealjs:
-    theme: default
-    slide-number: true
-    progress: true
-    transition: slide
-    highlight-style: github
     code-overflow: wrap
     css: styles.css
 ---
 
+## {.divider background-color="#111C26"}
+
+<br><br>
+
+::: eyebrow
+Workshop
+:::
+
+::: headline
+Getting Started with Posit Assistant
+:::
+
+::: subhead
+An AI agent for data science in Positron
+:::
 
 ## Install Positron
 
@@ -38,6 +48,9 @@ Posit, PBC
 
 ## {background-image="images/posit-assistant-context.png"}
 
+## {background-image="images/posit-assistant-wear-loop.png"}
+
+
 ## First demo
 
 ::: {.incremental}
@@ -46,7 +59,7 @@ Posit, PBC
 * ask something else (another plot, a statistical analysis, a map, etc.)
 :::
 
-{{< countdown "5:00" >}}
+{{< countdown "5:00" top="0" right="0" >}}
 
 ## Data Cleaning mode
 
@@ -54,9 +67,9 @@ Posit, PBC
 
 ## Create a Shiny app
 
-* Now that we have clean data, ask Posit Assistant to create a Shiny app that let's you explore the data. For instance:
+* Now that we have clean data, ask Posit Assistant to create a Shiny app that lets you explore the data. For instance:
 
-> Create a Shiny app using the clean happiness data to explore how the trajectory through time of the happiness score and rank for multiple countries. Let the user select countries (multi-select) and the years (with a slider).
+> Create a Shiny app using the clean happiness data to explore how the happiness score and rank of multiple countries change through time. Let the user select countries (multi-select) and the years (with a slider).
 
 Things you can try:
 
@@ -65,7 +78,7 @@ Things you can try:
 * use the other variables in the dataset
 * ask Posit Assistant to come up with suggestions to improve your app
 
-{{< countdown "10:00" >}}
+{{< countdown "10:00" top="0" right="0" >}}
 
 ## Sharing your apps from Positron
 
@@ -88,9 +101,9 @@ Things you can try:
 
 * Use one of the datasets provided (in the EDA folder), your own data, a public dataset, or a combination of these to build something interesting with Posit Assistant in 15 minutes
 * Use Posit Publisher to publish it to Posit Connect
-* Make sure to edit the Access settings to "All Users"
+* Make sure to set the Access settings to "All users - login required"
 * Share the URL in the Slido Q&A
 
-{{< countdown "15:00" >}}
+{{< countdown "15:00" top="0" right="0" >}}
 
 ## Questions?
