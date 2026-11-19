@@ -1,0 +1,11 @@
+.workshop {
+  border: 1px solid #d0dbe5;
+  border-left: 6px solid #447099;
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0;
+}
+
+.workshop h3 {
+  margin-top: 0;
+}

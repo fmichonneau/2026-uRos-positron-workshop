@@ -1,0 +1,41 @@
+---
+title: "Positron workshops at uRos 2026"
+subtitle: "Slides for three hands-on workshops, taught on 18 November 2026"
+lang: en
+format:
+  html:
+    theme: cosmo
+    toc: false
+    css: index.css
+---
+
+::: {.workshop}
+### 1. Getting Started with Positron
+
+Positron, the data science IDE from Posit: its layout, workspaces, the data
+explorer, the command palette, settings and extensions.
+
+[Open the slides](01-positron-getting-started.html){.btn .btn-primary}
+:::
+
+::: {.workshop}
+### 2. Getting Started with Posit Assistant
+
+Posit Assistant, the AI agent in Positron: fixing a Quarto report, cleaning
+data, building a Shiny app, and publishing it to Posit Connect.
+
+[Open the slides](02-positron-assistant.html){.btn .btn-primary}
+:::
+
+::: {.workshop}
+### 3. Developing Chat-Based Data Applications You Can Trust
+
+Adding a chat to a Shiny app with querychat, describing the data with
+data-dict, and giving an agent trusted calculations with commons.
+
+[Open the slides](03-developing-chat-apps.html){.btn .btn-primary}
+:::
+
+The exercise files are in the
+[2026-uRos-materials](https://github.com/fmichonneau/2026-uRos-materials)
+repository.

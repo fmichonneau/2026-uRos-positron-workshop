@@ -6,3 +6,8 @@
 01-positron-getting-started.html
 02-positron-assistant_files/**
 02-positron-assistant.html
+03-developing-chat-apps_files/**
+03-developing-chat-apps.html
+_site/
+/.quarto/
+**/*.quarto_ipynb

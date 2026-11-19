@@ -1,0 +1,15 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - index.qmd
+    - 01-positron-getting-started.qmd
+    - 02-positron-assistant.qmd
+    - 03-developing-chat-apps.qmd
+  # Deck 03 loads these fonts from raw CSS, which Quarto does not scan for
+  # resources.
+  resources:
+    - assets/fonts/
+
+website:
+  title: "Positron workshops at uRos 2026"
