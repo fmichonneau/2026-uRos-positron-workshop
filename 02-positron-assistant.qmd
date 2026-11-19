@@ -17,14 +17,8 @@ format:
 
 ## Install Positron
 
-### Option 1 (you can install locally)
-
-Go to <https://positron.posit.co/download>
-
-### Option 2 (use the web version)
-
 * Go to <https://workbench.workshop-prod.pwb.posit.it/>
-* Registration code: <TBD>
+* Registration code: B47VYFTU
 
 ## 
 
@@ -35,22 +29,6 @@ Learning Architect
 
 Posit, PBC
 
-
-## Your turn
-
-### Introduce yourself to your neighbor
-
-- Your name
-- What you use R for
-- What's the most interesting thing you have used AI for?
-
-{{< countdown "3:00" >}}
-
-## Poll
-
-<https://app.sli.do/event/bN4u1wKDYSv2TtSN5PepTH>
-
-![Slido poll QR code](images/slido-poll-2.png)
 
 ## {background-image="images/why-positron.png"}
 
@@ -108,11 +86,11 @@ Things you can try:
 
 ## What can you build?
 
-* Use one of the datasets provided, your own data, a public dataset, or a combination of these to build something interesting with Posit Assistant in 20 minutes
+* Use one of the datasets provided (in the EDA folder), your own data, a public dataset, or a combination of these to build something interesting with Posit Assistant in 15 minutes
 * Use Posit Publisher to publish it to Posit Connect
 * Make sure to edit the Access settings to "All Users"
 * Share the URL in the Slido Q&A
 
-{{< countdown "15:00" font_size="6rem"  top="50%" left="50%" class="slide-center"  >}}
+{{< countdown "15:00" >}}
 
 ## Questions?

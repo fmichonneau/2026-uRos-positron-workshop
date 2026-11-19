@@ -23,7 +23,7 @@ Go to <https://positron.posit.co/download>
 ### Option 2 (use the web version)
 
 * Go to <https://workbench.workshop-prod.pwb.posit.it/>
-* Registration code: <TBD>
+* Registration code: **B47VYFTU**
 
 ### Everyone, open: <https://bit.ly/2026-uros>
 
@@ -96,20 +96,30 @@ Content developed by Mine Çetinkaya-Rundel.
 
 ## A demo of Positron features
 
+:::: {.columns}
+
+::: {.column}
 * Data explorer
 * Layouts
-* Interpreter session selection
-* Sessions always start fresh
+* Interpreter selection
 * The command palette
+:::
+
+::: {.column}
 * Update Settings
 * Install extensions
 * Create new projects
 * Air formatter
+:::
+
+::::
+
+
 
 
 ## Your turn: Positron Bingo
 
-{{< countdown "15:00" font_size="6rem"  top="50%" left="50%" class="slide-center"  >}}
+{{< countdown "10:00" font_size="6rem"  top="50%" left="50%" class="slide-center"  >}}
 
 ::: {.incremental}
 * [Bingo solutions](https://posit-dev.github.io/positron-workshop/bingo-solutions/)
