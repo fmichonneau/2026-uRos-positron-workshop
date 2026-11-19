@@ -1,0 +1,312 @@
+/*-- scss:defaults --*/
+
+// Posit brand palette.
+$posit-blue: #447099;
+$posit-gray: #404041;
+$posit-orange: #ee6331;
+$posit-light-gray: #717171;
+$posit-light-blue: #d0dbe5;
+$posit-off-white: #f3f6f8;
+$posit-dark-blue: #111c26;
+$posit-muted-blue: #9fb6cc;
+
+$body-bg: #ffffff;
+$body-color: $posit-gray;
+$link-color: $posit-blue;
+
+$font-family-sans-serif: "Open Sans", Arial, sans-serif;
+$font-family-monospace: "Source Code Pro", Menlo, monospace;
+$presentation-heading-font: "Open Sans", Arial, sans-serif;
+$presentation-heading-color: $posit-gray;
+$presentation-heading-font-weight: 300;
+$presentation-heading-letter-spacing: -0.01em;
+$presentation-font-size-root: 34px;
+$presentation-h2-font-size: 1.55em;
+$presentation-h3-font-size: 1em;
+$code-block-font-size: 0.72em;
+$code-block-bg: $posit-off-white;
+
+/*-- scss:rules --*/
+
+.reveal .slides section {
+  text-align: left;
+}
+
+.reveal h2 {
+  margin-bottom: 0.7em;
+}
+
+.reveal h3 {
+  font-weight: 700;
+  color: $posit-blue;
+}
+
+.reveal strong {
+  font-weight: 700;
+}
+
+.reveal .slide-number {
+  color: $posit-light-gray;
+}
+
+// Eyebrows: a short uppercase label above the headline, set by the slide's
+// class.
+@mixin eyebrow($label, $color: $posit-blue) {
+  h2::before {
+    content: $label;
+    display: block;
+    font-family: $font-family-monospace;
+    font-size: 0.42em;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $color;
+    margin-bottom: 0.6em;
+  }
+}
+
+.reveal section.predict { @include eyebrow("Predict"); }
+.reveal section.your-turn { @include eyebrow("Your turn"); }
+.reveal section.check { @include eyebrow("Check"); }
+.reveal section.at-work { @include eyebrow("Why this matters at work"); }
+.reveal section.demo { @include eyebrow("Demo"); }
+.reveal section.goal { @include eyebrow("Where we are going"); }
+.reveal section.recap { @include eyebrow("Recap"); }
+
+.reveal .eyebrow {
+  font-family: $font-family-monospace;
+  font-size: 0.65em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $posit-blue;
+}
+
+// Dark opener and section dividers.
+.reveal section.divider {
+  color: #ffffff;
+
+  .eyebrow {
+    color: $posit-orange;
+  }
+
+  .eyebrow::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: $posit-orange;
+    margin: 0.9em 0 1.1em;
+  }
+
+  .headline {
+    font-size: 2.3em;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    color: #ffffff;
+  }
+
+  .subhead {
+    font-size: 1em;
+    font-weight: 700;
+    color: $posit-muted-blue;
+    margin-top: 0.8em;
+  }
+}
+
+// One large statement on an otherwise empty slide.
+.reveal .statement {
+  font-size: 1.5em;
+  font-weight: 300;
+  line-height: 1.3;
+  max-width: 24em;
+}
+
+.reveal .quiet {
+  color: $posit-light-gray;
+}
+
+.reveal .small {
+  font-size: 0.8em;
+}
+
+// Flow diagrams: boxes joined by arrows.
+.reveal .flow {
+  display: flex;
+  align-items: stretch;
+  gap: 0.5em;
+  margin: 1em 0;
+
+  .box {
+    flex: 1;
+    background: $posit-light-blue;
+    border-radius: 12px;
+    padding: 0.7em 0.8em;
+    font-size: 0.78em;
+    line-height: 1.3;
+  }
+
+  .box strong {
+    display: block;
+    color: $posit-gray;
+    margin-bottom: 0.25em;
+  }
+
+  .box.you {
+    background: $posit-off-white;
+    border: 2px solid $posit-light-blue;
+  }
+
+  .box.swap {
+    background: #ffffff;
+    border: 3px solid $posit-orange;
+  }
+
+  .arrow {
+    flex: 0 0 auto;
+    align-self: center;
+    color: $posit-blue;
+    font-size: 1.2em;
+  }
+}
+
+// Numbered cards.
+.reveal .cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6em;
+  margin-top: 0.4em;
+
+  &.three {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .card {
+    background: $posit-light-blue;
+    border-left: 3px solid $posit-blue;
+    padding: 0.6em 0.8em;
+    font-size: 0.78em;
+    line-height: 1.35;
+  }
+
+  .card .num {
+    font-family: $font-family-monospace;
+    letter-spacing: 0.08em;
+    color: $posit-blue;
+    display: block;
+    margin-bottom: 0.2em;
+  }
+
+  .card strong {
+    display: block;
+    margin-bottom: 0.2em;
+  }
+
+  // The tool that does the job named on the card.
+  .card .tool {
+    display: block;
+    margin-top: 0.5em;
+  }
+
+  .card .tool strong {
+    display: inline;
+  }
+}
+
+// The route through the session, with the current stop marked.
+.reveal .roadmap {
+  display: flex;
+  gap: 0.4em;
+  margin-top: 1em;
+
+  .stop {
+    flex: 1;
+    background: $posit-off-white;
+    border-top: 6px solid $posit-light-blue;
+    padding: 0.6em 0.7em;
+    font-size: 0.7em;
+    line-height: 1.3;
+    color: $posit-light-gray;
+  }
+
+  .stop .num {
+    font-family: $font-family-monospace;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 0.3em;
+  }
+
+  .stop.now {
+    border-top-color: $posit-orange;
+    background: $posit-light-blue;
+    color: $posit-gray;
+    font-weight: 700;
+  }
+}
+
+// Provenance labels in the commons section. The label text carries the
+// meaning; the mark only reinforces it.
+.reveal .label-trusted,
+.reveal .label-cited,
+.reveal .label-untrusted {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.reveal .label-trusted::before,
+.reveal .label-cited::before,
+.reveal .label-untrusted::before {
+  display: inline-block;
+  width: 0.7em;
+  height: 0.7em;
+  border-radius: 50%;
+  margin-right: 0.35em;
+  content: "";
+}
+
+.reveal .label-trusted::before { background: #2e7d5b; }
+.reveal .label-cited::before { background: $posit-blue; }
+.reveal .label-untrusted::before { background: #c9a227; }
+
+.reveal table {
+  font-size: 0.8em;
+}
+
+.reveal table th {
+  font-weight: 700;
+  color: $posit-gray;
+  border-bottom: 2px solid $posit-gray;
+}
+
+// Show code blocks in full; the default caps their height and scrolls.
+.reveal pre,
+.reveal pre code,
+.reveal div.sourceCode pre code {
+  max-height: none !important;
+}
+
+.reveal pre code {
+  line-height: 1.45;
+}
+
+.reveal section.small-code pre code {
+  font-size: 0.9em;
+  line-height: 1.35;
+}
+
+.reveal section.small-code h2 {
+  margin-bottom: 0.4em;
+}
+
+.reveal code {
+  color: $posit-gray;
+}
+
+.reveal ol,
+.reveal ul {
+  line-height: 1.45;
+}
+
+.reveal li {
+  margin-bottom: 0.35em;
+}

@@ -1,0 +1,599 @@
+---
+pagetitle: "Developing chat-based data applications you can trust"
+date: "2026-11-18"
+metadata-files: [_posit-slides.yml]
+format: revealjs
+---
+
+## {.divider background-color="#111C26"}
+
+<br><br>
+
+::: eyebrow
+Workshop
+:::
+
+::: headline
+Developing chat-based data applications you can trust
+:::
+
+::: subhead
+Building chat interfaces for data with querychat, data-dict, and commons
+:::
+
+## LLMs give us a new way to explore data
+
+::: statement
+We can ask a dataset a question in plain language, and get an answer in seconds.
+:::
+
+## How does it work?
+
+::: eyebrow
+The model writes the query
+:::
+
+::: flow
+::: box
+**A question**
+In plain language.
+:::
+
+::: arrow
+→
+:::
+
+::: {.box .swap}
+**The model writes a query**
+It translates the question into a query. The query is computed on the data.
+:::
+
+::: arrow
+→
+:::
+
+::: box
+**The data gives the number**
+Exact, repeatable, and the query can be audited.
+:::
+:::
+
+## Can you trust the result?
+
+The query is only as good as what the model knows about the data
+
+* What is in the columns?
+* What do our words mean?
+* Is there an official way to get to the number?
+
+## The data scientist role changes
+
+From answering questions to preparing the data
+
+::: {.cards .three}
+::: card
+[01]{.num}
+**Make every answer checkable**
+There is a query behind each answer and it can be audited.
+
+[with **querychat**]{.fragment .tool}
+:::
+
+::: card
+[02]{.num}
+**Give information about the data to the model**
+What's in the columns? What's the unit? What's the possible range? Write it to a file that can be given to the model.
+
+[with **data-dict**]{.fragment .tool}
+:::
+
+::: card
+[03]{.num}
+**Guarantee the numbers that matter**
+Give the model the functions to compute what matters, and label the answers.
+
+[with **commons**]{.fragment .tool}
+:::
+:::
+
+## During this workshop you will {.goal}
+
+::: {.cards .three}
+::: card
+[01]{.num}
+**Add a chat to a Shiny app**
+with querychat, and connect it to the app's outputs.
+:::
+
+::: card
+[02]{.num}
+**Make its answers consistent**
+by giving the model what our words and columns mean.
+:::
+
+::: card
+[03]{.num}
+**Give an agent your own calculations**
+so you know where the number comes from.
+:::
+:::
+
+## The data: Bigfoot sightings
+
+::: {.cards}
+::: card
+[Source]{.num}
+**One row per report**
+Collected and rated by the Bigfoot Field Researchers Organization (BFRO), from 49 US states.
+:::
+
+::: card
+[Where and when]{.num}
+**Date, season, state, county, coordinates**
+:::
+
+::: card
+[Rating]{.num}
+**Class A, B or C**
+The BFRO's rating of how direct the evidence is.
+:::
+
+::: card
+[Weather]{.num}
+**Conditions on the day**
+Temperature, humidity, cloud cover, precipitation, phase of the moon.
+:::
+:::
+
+## The Shiny app you will build
+
+1. Go to <https://workbench.workshop-prod.pwb.posit.it>
+2. Register using the Workshop code: B47VYFTU
+3. Launch a Positron session
+4. Clone <https://github.com/fmichonneau/2026-uros-materials>
+5. Open the file `ai-apps/04-dictionary.R`
+6. Set the working directory as `ai-apps`
+7. Launch the app (click on the "play" button)
+
+## How will you get there?
+
+::: roadmap
+
+::: stop
+[01]{.num}
+Convert the dropdown to a chat interface
+:::
+
+::: stop
+[02]{.num}
+How to make sure that the answers are consistent?
+:::
+
+::: stop
+[03]{.num}
+How to provide trusted functions to the model?
+:::
+:::
+
+## {.divider background-color="#111C26"}
+
+<br><br>
+
+::: eyebrow
+Part 1
+:::
+
+::: headline
+Convert the dropdown to a chat interface
+:::
+
+::: subhead
+Using querychat
+:::
+
+## What happens between a question and a filtered table
+
+::: flow
+::: {.box .you}
+**1. You ask**
+A question in plain language.
+:::
+
+::: {.arrow .fragment data-fragment-index="1"}
+→
+:::
+
+::: {.box .fragment data-fragment-index="1"}
+**2. The model reads**
+The question and a description of the data (not the data itself).
+:::
+
+::: {.arrow .fragment data-fragment-index="2"}
+→
+:::
+
+::: {.box .fragment data-fragment-index="2"}
+**3. The model writes SQL**
+:::
+
+::: {.arrow .fragment data-fragment-index="3"}
+→
+:::
+
+::: {.box .fragment data-fragment-index="3"}
+**4. A database runs the query**
+By default, DuckDB, inside your R session.
+:::
+
+::: {.arrow .fragment data-fragment-index="4"}
+→
+:::
+
+::: {.box .fragment data-fragment-index="4"}
+**5. You get a data frame back**
+That you can use in your Shiny app
+:::
+:::
+
+## Aside: Why SQL?
+
+* It's expressive: the query is readable
+* It's familiar: LLMs are good at writing it
+* It's secure: read-only permissions
+* It's portable: works across different systems
+
+## querychat needs three things
+
+```r
+library(querychat)
+
+# 1. Describe the chat: which data, which model
+qc <- QueryChat$new(
+  bigfoot,                              # the dataset
+  client = ellmer::chat_aws_bedrock(),  # connect to the llm
+  greeting = "greeting.md"              # personalize the chat
+)
+
+# 2. Put the chat on the page (in the UI)
+sidebar = qc$sidebar()
+
+# 3. Start it (in the server)
+qc_vals <- qc$server()
+```
+
+The chat hands back three reactives
+
+| | What it holds |
+|---|---|
+| `qc_vals$df()` | The rows that match, as a data frame |
+| `qc_vals$sql()` | The query the model wrote |
+| `qc_vals$title()` | A short name for the current filter |
+
+## Replace the dropdown with a chat {.your-turn .small-code}
+
+Open `app.R` and run the app.
+The edit to add querychat
+
+```r
+# 1. Above the UI: load querychat and describe the chat
+library(querychat)
+
+qc <- QueryChat$new(
+  bigfoot,
+  client = ellmer::chat_aws_bedrock(),
+  greeting = "greeting.md"
+)
+
+# 2. In the UI: replace the whole sidebar = sidebar(...) with
+sidebar = qc$sidebar()
+
+# 3. In the server: start the chat, and swap the reactive
+qc_vals <- qc$server()
+
+reports <- reactive(qc_vals$df())
+```
+
+Run the app and ask: **Show reports from Washington in summer**
+
+## {.divider background-color="#111C26"}
+
+<br><br>
+
+::: eyebrow
+Part 2
+:::
+
+::: headline
+How to solve the "Same question, different answers" problem
+:::
+
+::: subhead
+with data-dict
+:::
+
+## Everyone asks the same question {.your-turn}
+
+In your own app, ask:
+
+**Show Class A reports under a full moon in the Pacific Northwest**
+
+## What did the model have to decide?
+
+```sql
+SELECT * FROM bigfoot
+WHERE classification = 'Class A'
+  AND state IN ('Washington', 'Oregon')
+  AND moon_phase BETWEEN 0.47 AND 0.53
+```
+
+::: {.fragment}
+- Which states are the Pacific Northwest? Is Idaho in?
+- How wide is a full moon?
+
+It decided on its own, and it does not decide the same way every time.
+:::
+
+## data-dict: how to tell the model what we know about the data {.small-code}
+
+::: {.columns}
+::: {.column .small width="45%"}
+A **data dictionary** says what the data holds and what our words mean. data-dict is a format for writing one, and a command-line tool that works with it. It records:
+
+- **The dataset**: what one row is, what was left out
+- **Each column**: type, units, allowed values or range, examples, whether it can be empty
+- **Links between tables**: how to join them
+- **Our words**: a glossary of terms and their definitions
+:::
+
+::: {.column width="55%"}
+```yaml
+name: bigfoot
+description: >
+  Bigfoot sighting reports. One row per report.
+
+tables:
+  - name: bigfoot
+    columns:
+      - name: season
+        type: enum
+        values: [Winter, Spring, Summer,
+                 Fall, Unknown]
+        description: >
+          "Unknown" means the witness did not say.
+
+glossary:
+  BFRO: Bigfoot Field Researchers Organization.
+```
+:::
+:::
+
+[Plain YAML: a text file that people can read and edit, and that programs can check.]{.quiet}
+
+::: {.callout-warning appearance="simple"}
+data-dict is very new and still in development.
+:::
+
+## Give the model the information it needs to make the correct decisions
+
+Two entries from `data-dict.yaml`, the file we edit next:
+
+```yaml
+columns:
+  - name: moon_phase
+    description: >
+      Position in the lunar cycle as a number from 0 to 1.
+      0.5 is a full moon.
+
+glossary:
+  Class A: A clear sighting in circumstances where mistaking
+    another animal for the creature can be ruled out with confidence.
+```
+
+
+## Define the two terms {.your-turn}
+
+1. At the bottom of `data-dict.yaml`, add to the glossary:
+
+```yaml
+  full moon: A moon_phase between 0.45 and 0.55.
+  Pacific Northwest: Washington, Oregon and Idaho.
+```
+
+2. In `app.R`, hand the file to the chat:
+
+```r
+qc <- QueryChat$new(
+  bigfoot,
+  client = ellmer::chat_aws_bedrock(),
+  greeting = "greeting.md",
+  data_dict = querychat_dict("data-dict.yaml")
+)
+```
+
+3. Run the app and ask the same question.
+
+## A dictionary the data cannot disagree with {.demo}
+
+```bash
+# Check the data against the dictionary
+data-dict validate-data data-dict.yaml
+
+# Build a page a colleague can browse
+data-dict render data-dict.yaml
+```
+
+The same file is read by the chat, checked against the data, and published for people.
+
+## {.divider background-color="#111C26"}
+
+<br><br>
+
+::: eyebrow
+Part 3
+:::
+
+::: headline
+Guarantee the numbers that matter
+:::
+
+::: subhead
+with commons
+:::
+
+## Remember the third question from the opening?
+
+::: statement
+"What share of reports in each season are Class A?"
+:::
+
+::: {.fragment}
+The chat invented a formula while answering, and the number looked right.
+
+Would you trust it?
+
+A model writes a new formula each time someone asks.
+:::
+
+## You already have the right formula
+
+::: statement
+It is in your code: the function behind the published figure, reviewed and approved.
+
+[What if the agent could run that, and tell you when it did?]{.fragment}
+:::
+
+
+## commons labels every answer with where it came from
+
+| Label | What the agent did |
+|---|----------|
+| [Trusted]{.label-trusted} | Ran a calculation our team wrote and vetted |
+| [Cited]{.label-cited} | Wrote its own code, and quoted our documentation to justify it |
+| [Untrusted]{.label-untrusted} | Wrote its own code, with nothing of ours behind it |
+
+<br>
+
+The agent does not choose the label. commons works it out based on what the agent did.
+
+## First: commons with just the data {.demo}
+
+```r
+sightings <- data_source(bigfoot = bigfoot)
+
+agent <- commons(
+  client = ellmer::chat_aws_bedrock(),
+  data_sources = list(sightings = sightings)
+)
+
+commons_app(agent)
+```
+
+We ask: **What does Class A mean, and what share of reports in each season are Class A?**
+
+## Second: commons with a data dictionary
+
+```r
+sightings <- data_source(
+  bigfoot = bigfoot,
+  dictionary = "data-dict.yaml"
+)
+
+agent <- commons(
+  client = ellmer::chat_aws_bedrock(),
+  data_sources = list(sightings = sightings)
+)
+
+commons_app(agent)
+```
+
+We ask: **What does Class A mean, and what share of reports in each season are Class A?**
+
+## A measure is an R function with a tag {.small-code}
+
+```r
+#' Share of Class A reports
+#'
+#' The percentage of sighting reports that the BFRO rated Class A,
+#' within each group.
+#'
+#' @param by `enum[season, state]` Column that defines the groups.
+#' @measure
+class_a_share <- function(by = "season", sightings) {
+  by <- match.arg(by, c("season", "state"))
+  reports <- DBI::dbReadTable(sightings, "bigfoot")
+
+  reports |>
+    dplyr::group_by(group = .data[[by]]) |>
+    dplyr::summarize(
+      reports = dplyr::n(),
+      class_a = sum(classification == "Class A"),
+      class_a_share = round(100 * class_a / reports, 1)
+    )
+}
+```
+
+## Third: Give the agent the measure {.your-turn}
+
+1. Create `measures/class-a-share.R` from `solutions/measures/`.
+2. In `commons-app.R`, point the agent at the folder:
+
+```r
+agent <- commons(
+  client = ellmer::chat_aws_bedrock(),
+  data_sources = list(sightings = sightings),
+  semantic_layer = semantic_layer("measures")
+)
+```
+
+3. Run the app and ask the same question.
+4. Then ask: **Which states have the highest Class A share?**
+
+## {.divider background-color="#111C26"}
+
+<br><br>
+
+::: eyebrow
+Wrap-up
+:::
+
+::: headline
+What you built
+:::
+
+## Overview
+
+::: {.cards .three}
+::: card
+[01]{.num}
+Added a chat to a Shiny app
+with querychat
+:::
+
+::: card
+[02]{.num}
+Gave the model information about the data
+with data-dict
+:::
+
+::: card
+[03]{.num}
+Provided trusted functions to the model
+with commons
+:::
+:::
+
+## {.divider background-color="#111C26"}
+
+<br><br>
+
+::: eyebrow
+Thank you
+:::
+
+::: headline
+What are your questions?
+:::
+
+::: subhead
+`francois.michonneau@posit.co`
+:::

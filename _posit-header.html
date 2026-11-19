@@ -1,0 +1,36 @@
+<style>
+  /* Fonts load from assets/ next to the rendered deck. They are declared
+     here, not in posit.scss, because the compiled theme lives in another
+     folder and relative URLs would resolve against it. */
+  @font-face {
+    font-family: "Open Sans";
+    src: url("assets/fonts/OpenSans.ttf") format("truetype");
+    font-weight: 300 800;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Open Sans";
+    src: url("assets/fonts/OpenSans-Italic.ttf") format("truetype");
+    font-weight: 300 800;
+    font-style: italic;
+  }
+  @font-face {
+    font-family: "Source Code Pro";
+    src: url("assets/fonts/SourceCodePro.ttf") format("truetype");
+    font-weight: 200 900;
+    font-style: normal;
+  }
+  .reveal.has-dark-background .slide-logo {
+    content: url("assets/logos/posit-horiz-white.png");
+    top: 48px;
+    left: 64px;
+    bottom: auto !important;
+    right: auto !important;
+  }
+  /* Full-slide screenshots carry their own Posit logo, which the deck's
+     logo and slide number would cover. */
+  .reveal:has(.slides section.present[data-background-image]) .slide-logo,
+  .reveal:has(.slides section.present[data-background-image]) .slide-number {
+    display: none !important;
+  }
+</style>
